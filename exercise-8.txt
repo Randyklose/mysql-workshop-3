@@ -1,0 +1,19 @@
+List how many phones were landlines, cellular and fax for
+entries with birthdates between October 1950 and October 1960
+
+
+select Phone.subtype , count(Phone.subtype) from Phone join Entry on Entry.id = Phone.entryId where (
+    Entry.birthday between "1950-10-01" and "1960-10-01"
+) group by subtype;
+
+mysql> select Phone.subtype , count(Phone.subtype) from Phone join Entry on Entry.id = Phone.entryId where (
+         Entry.birthday between "1950-10-01 00:00:00" and "1960-10-01 00:00:00"
+     ) group by subtype;
++----------+----------------------+
+| subtype  | count(Phone.subtype) |
++----------+----------------------+
+| landline |                  680 |
+| cellular |                  552 |
+| fax      |                  536 |
++----------+----------------------+
+3 rows in set (0.02 sec)

@@ -1,0 +1,40 @@
+Reflect the data model shown in schema/addressbook_normalized.png within database decodemtl_addressbook
+Account.id is a primary auto-increment key
+AddressBook.id is a primary auto-increment key
+Entry.id is a primary auto-increment key
+Entry.type is an ENUM column permitting phone, address and electronic-mail
+Address.id is a primary auto-increment key
+Address.type is an ENUM column permitting home, work and other
+ElectronicMail.id is a primary auto-increment key
+ElectronicMail.type is an ENUM column permitting home, work and other
+Phone.id is a primary auto-increment key
+Phone.type is an ENUM column permitting home, work and other
+Phone.subtype is an ENUM column permitting landline, cellular and fax
+
+
+mysql> create database decodemtl_addressbook;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use decodemtl_addressbook;
+Database changed
+
+mysql> create table Account(id int auto_increment primary key);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table AddressBook(id int auto_increment key);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table Entry(id int auto_increment primary key, type enum("phone", "address", "electronic-email"));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table Address(id int auto_increment primary key, type enum("home", "work", "other"));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table ElectronicMail(id int auto_increment primary key, type enum("home", "work", "other"));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table Phone(id int auto_increment primary key, type enum("home", "work", "other"),subtype enum("landline", "cellular", "fax"));
+Query OK, 0 rows affected (0.02 sec)
+
+
+
